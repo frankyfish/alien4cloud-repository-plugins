@@ -3,7 +3,7 @@
   <parent>
     <groupId>alien4cloud</groupId>
     <artifactId>alien4cloud-parent</artifactId>
-    <version>3.3.0</version>
+    <version>3.4.0-SNAPSHOT</version>
   </parent>
   <packaging>pom</packaging>
   <artifactId>alien4cloud-repository-plugins</artifactId>
@@ -13,13 +13,16 @@
     <module>alien4cloud-repository-plugin-common</module>
     <module>alien4cloud-http-repository-plugin</module>
   </modules>
+  <properties>
+    <alien4cloud.version>3.4.0-SNAPSHOT</alien4cloud.version>
+  </properties>
 
   <dependencies>
     <!-- alien4cloud -->
     <dependency>
       <groupId>alien4cloud</groupId>
       <artifactId>alien4cloud-core</artifactId>
-      <version>${project.version}</version>
+      <version>${alien4cloud.version}</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -83,29 +86,12 @@
     </dependencies>
   </dependencyManagement>
 
-  <repositories>
-    <repository>
-      <id>pdl-releases</id>
-      <url>https://www.portaildulibre.fr/nexus/repository/opensource-releases</url>
-    </repository>
-  </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>pdl-releases</id>
-      <url>https://www.portaildulibre.fr/nexus/repository/opensource-releases</url>
-    </pluginRepository>
-  </pluginRepositories>
-
   <distributionManagement>
     <repository>
-      <id>pdl-releases</id>
-      <url>https://www.portaildulibre.fr/nexus/repository/opensource-releases</url>
+      <id>internal.repo</id>
+      <name>Github Repo</name>
+      <url>file:///home/tri/Work/a4c/upstream/alien4cloud-repository-plugins</url>
     </repository>
-    <snapshotRepository>
-      <id>pdl-snapshots</id>
-      <url>https://www.portaildulibre.fr/nexus/repository/opensource-snapshots</url>
-    </snapshotRepository>
   </distributionManagement>
 
   <build>
@@ -174,6 +160,13 @@
           <downloadJavadocs>false</downloadJavadocs>
         </configuration>
       </plugin>
+      <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+          <altDeploymentRepository>internal.repo::default::file:///home/tri/Work/a4c/upstream/alien4cloud-repository-plugins</altDeploymentRepository>
+        </configuration>
+      </plugin>
     </plugins>
     <pluginManagement>
       <plugins>
@@ -213,7 +206,7 @@
         <dependency>
           <groupId>alien4cloud</groupId>
           <artifactId>alien4cloud-core</artifactId>
-          <version>${project.version}</version>
+          <version>${alien4cloud.version}</version>
           <scope>compile</scope>
           <exclusions>
             <exclusion>
