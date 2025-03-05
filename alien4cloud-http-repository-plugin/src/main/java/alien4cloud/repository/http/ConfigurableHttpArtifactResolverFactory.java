@@ -1,6 +1,6 @@
 package alien4cloud.repository.http;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.springframework.context.ApplicationContext;
 
