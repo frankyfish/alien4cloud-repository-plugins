@@ -1,6 +1,6 @@
 package alien4cloud.repository.configuration;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import alien4cloud.ui.form.annotation.FormPassword;
 import lombok.Getter;

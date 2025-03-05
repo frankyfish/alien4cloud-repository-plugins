@@ -4,8 +4,7 @@ import static alien4cloud.repository.http.HttpUtil.isHttpURL;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
+import jakarta.annotation.Resource;
 import org.apache.commons.lang.StringUtils;
 
 import alien4cloud.component.repository.IConfigurableArtifactResolver;
